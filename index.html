@@ -2,7 +2,7 @@
 <html lang="es">
 <head>
 <meta charset="UTF-8">
-<title>Pluffyzz</title>
+<title>Pluffyzz </title>
 
 <link href="https://fonts.googleapis.com/css2?family=Fredoka:wght@400;600;700&display=swap" rel="stylesheet">
 
@@ -23,13 +23,13 @@ body {
 nav {
     background: var(--azul);
     color: white;
-    padding: 25px;
+    padding: 15px;
     display: flex;
     justify-content: space-between;
     align-items: center;
 }
 
-/* BOTÓN CARRITO BLANCO */
+/* BOTÓN CARRITO */
 .btn-cart {
     position: relative;
     width: 50px;
@@ -65,23 +65,48 @@ nav {
     align-items: center;
 }
 
-/* LOGO */
+/* LOGO GRANDE */
 .logo {
     font-size: 150px;
     font-weight: 950;
     color: var(--amarillo);
-    -webkit-text-stroke: 3px black;
-    text-shadow: 4px 4px #000;
+    -webkit-text-stroke: 4px black;
+    text-shadow:
+        6px 6px 0px #000,
+        10px 10px 0px rgba(0,0,0,0.3);
+    letter-spacing: 6px;
+    line-height: 1;
+}
+
+/* SUBTÍTULO */
+.subtitle {
+    font-size: 80px;
+    font-weight: 900;
+    color: var(--azul);
+    letter-spacing: 4px;
+    margin-top: 10px;
+    text-shadow: 2px 2px 0px rgba(0,0,0,0.2);
 }
 
 /* LOGO IMAGEN */
 .logo-img {
-    width: 200px;
-    height: 200px;
+    width: 220px;
+    height: 220px;
     object-fit: cover;
     border-radius: 50%;
-    border: 5px solid white;
+    border: 6px solid white;
     box-shadow: 0 10px 25px rgba(0,0,0,0.3);
+}
+
+/* RESPONSIVE */
+@media (max-width: 768px) {
+    .logo {
+        font-size: 60px;
+    }
+
+    .subtitle {
+        font-size: 22px;
+    }
 }
 
 /* CATALOGO */
@@ -99,7 +124,6 @@ nav {
     cursor: pointer;
 }
 
-/* IMÁGENES BIEN PROPORCIONADAS */
 .card img {
     width: 250px;
     height: 250px;
@@ -209,7 +233,7 @@ nav {
 <section class="hero-pro">
     <div>
         <h1 class="logo">PLUFFYZZ</h1>
-        <h2>PLUSH TOY FARM</h2>
+        <h2 class="subtitle">PLUSH TOY FARM</h2>
     </div>
 
     <img src="animalespluffyzz.png" class="logo-img">
