@@ -4,135 +4,126 @@
 <meta charset="UTF-8">
 <title>Pluffyzz </title>
 
+<link href="https://fonts.googleapis.com/css2?family=Fredoka:wght@400;600;700&display=swap" rel="stylesheet">
+
 <style>
 :root {
-    --color-principal: hotpink;
-    --fondo: #fffafc;
+    --color-principal: #6BCB77;
+    --fondo: #FFF8FB;
+    --azul: #1B3C73;
+    --amarillo: #FFE066;
 }
 
 body {
-    font-family: -apple-system, BlinkMacSystemFont, sans-serif;
+    font-family: 'Fredoka', sans-serif;
     margin: 0;
     background: var(--fondo);
 }
 
 /* NAV */
 nav {
-    background: black;
+    background: var(--azul);
     color: white;
     padding: 15px;
     display: flex;
     justify-content: space-between;
 }
 
-nav button {
-    background: var(--color-principal);
-    border: none;
-    padding: 10px;
-    border-radius: 10px;
-    cursor: pointer;
-}
-
-/* HERO PRO */
+/* HERO */
 .hero-pro {
-    background: #FFD400;
+    background: var(--amarillo);
     display: flex;
     justify-content: space-between;
-    align-items: center;
     padding: 50px;
-    flex-wrap: wrap;
 }
 
+/* LOGO */
 .logo {
-    font-size: 60px;
-    font-weight: bold;
-    text-shadow: 4px 4px 0px #000;
-}
-
-.hero-text h2 {
-    font-size: 35px;
+    font-size: 70px;
     font-weight: 900;
-}
-
-.hero-img img {
-    width: 280px;
-    border-radius: 50%;
+    color: var(--amarillo);
+    -webkit-text-stroke: 3px black;
+    text-shadow: 4px 4px #000;
 }
 
 /* CATALOGO */
 .catalogo {
-    background: #FFD400;
+    background: var(--amarillo);
     display: flex;
     justify-content: center;
     gap: 40px;
-    padding: 60px 20px;
+    padding: 60px;
     flex-wrap: wrap;
 }
 
 .card {
-    text-align: center;
     cursor: pointer;
-    transition: 0.3s;
 }
 
 .card img {
     width: 250px;
     height: 350px;
-    object-fit: cover;
     border-radius: 30px;
 }
 
-.card:hover {
-    transform: scale(1.05);
-}
-
-.card:active {
-    transform: scale(0.95);
-}
-
 .info {
-    background: #0B2A5B;
+    background: var(--azul);
     color: white;
-    padding: 15px;
+    padding: 10px;
     border-radius: 20px;
     margin-top: -40px;
-    width: 200px;
-    margin-left: auto;
-    margin-right: auto;
+    text-align: center;
 }
 
-.info p {
-    color: #00FF88;
-    font-weight: bold;
-}
-
-/* CARRITO iOS */
+/* CARRITO */
 #carrito {
     position: fixed;
-    right: 0;
+    left: 0;
     bottom: -100%;
     width: 100%;
-    height: 70%;
+    height: 85%;
     background: white;
-    border-radius: 25px 25px 0 0;
-    box-shadow: 0 -10px 30px rgba(0,0,0,0.3);
+    border-radius: 30px 30px 0 0;
     padding: 20px;
     transition: 0.4s;
+    overflow-y: auto;
 }
 
 #carrito.activo {
     bottom: 0;
 }
 
-/* NOTIFICACIÓN */
+.cerrar {
+    background: red;
+    color: white;
+    border-radius: 10px;
+    padding: 10px;
+}
+
+/* BOTÓN WHATSAPP */
+.btn-wa {
+    position: fixed;
+    bottom: 25px;
+    right: 25px;
+    width: 65px;
+    height: 65px;
+    border-radius: 50%;
+    background: linear-gradient(135deg, #6BCB77, #4CAF50);
+    color: white;
+    font-size: 28px;
+    border: none;
+    z-index: 9999;
+}
+
+/* NOTI */
 .noti {
     position: fixed;
-    bottom: 20px;
+    bottom: 100px;
     right: 20px;
-    background: #0B2A5B;
+    background: var(--azul);
     color: white;
-    padding: 15px;
-    border-radius: 15px;
+    padding: 10px;
+    border-radius: 10px;
     opacity: 0;
     transition: 0.3s;
 }
@@ -143,92 +134,110 @@ nav button {
 
 <nav>
     <h2>Pluffyzz </h2>
-    <button onclick="toggleCarrito()">
-        🛒 (<span id="contador">0</span>)
-    </button>
+    <button onclick="toggleCarrito()">🛒 (<span id="contador">0</span>)</button>
 </nav>
 
-<!-- HERO -->
 <section class="hero-pro">
-    <div class="hero-text">
+    <div>
         <h1 class="logo">PLUFFYZZ</h1>
-        <h2>WELCOME TO THE<br>PLUSH TOY FARM!</h2>
+        <h2>PLUSH TOY FARM</h2>
     </div>
-    <div class="hero-img">
-        <img src="pinguino.png">
-    </div>
+    <img src="pinguino.png" width="200">
 </section>
 
-<!-- CATALOGO -->
 <section class="catalogo">
 
 <div class="card" onclick="agregar('Conejo Soft',350)">
-    <img src="conejo.png">
-    <div class="info">
-        <h3>FUNNY BUNNY</h3>
-        <p>$350 MX</p>
-    </div>
+<img src="conejo.png">
+<div class="info">FUNNY BUNNY - $350</div>
 </div>
 
 <div class="card" onclick="agregar('Elefante Puffy',350)">
-    <img src="elefante.png">
-    <div class="info">
-        <h3>ELEFUN</h3>
-        <p>$350 MX</p>
-    </div>
+<img src="elefante.png">
+<div class="info">ELEFUN - $350</div>
 </div>
 
 <div class="card" onclick="agregar('Oso Puffy',350)">
-    <img src="oso.png">
-    <div class="info">
-        <h3>CLOUDY BEAR</h3>
-        <p>$350 MX</p>
-    </div>
+<img src="oso.png">
+<div class="info">CLOUDY BEAR - $350</div>
 </div>
 
-<div class="card" onclick="agregar('Pingüino Puffy',350)">
-    <img src="pinguino.png">
-    <div class="info">
-        <h3>PENGU PUFF</h3>
-        <p>$350 MX</p>
-    </div>
+<div class="card" onclick="agregar('Pinguino Puffy',350)">
+<img src="pinguino.png">
+<div class="info">PINGU - $350</div>
 </div>
-
+  
 </section>
 
-<!-- CARRITO -->
 <div id="carrito">
-    <h2>🛒 Carrito</h2>
-    <ul id="lista"></ul>
-    <h3>Total: $<span id="total">0</span> MXN</h3>
-    <button style="background:green;" onclick="pagar()">Comprar por WhatsApp 💬</button>
+<button class="cerrar" onclick="toggleCarrito()">Cerrar</button>
+<h2>Carrito</h2>
+<div id="lista"></div>
+<h3>Total: $<span id="total">0</span></h3>
 </div>
+
+<button class="btn-wa" onclick="pagar()">💬</button>
 
 <div id="notificacion" class="noti"></div>
 
 <script>
-let carrito = [];
+let carrito = JSON.parse(localStorage.getItem("carrito")) || [];
 let total = 0;
 
+function guardarCarrito(){
+    localStorage.setItem("carrito", JSON.stringify(carrito));
+}
+
 function agregar(nombre, precio){
-    carrito.push({nombre, precio});
-    total += precio;
+    let existente = carrito.find(item => item.nombre === nombre);
+
+    if(existente){
+        existente.cantidad++;
+    } else {
+        carrito.push({nombre, precio, cantidad: 1});
+    }
+
+    guardarCarrito();
     render();
     actualizarContador();
-    mostrarNotificacion(nombre + " añadido 🛒");
+    mostrarNotificacion(nombre + " añadido");
 }
 
 function render(){
     let lista = document.getElementById("lista");
     lista.innerHTML = "";
+    total = 0;
 
-    carrito.forEach(item=>{
-        let li = document.createElement("li");
-        li.textContent = item.nombre + " - $" + item.precio;
-        lista.appendChild(li);
+    carrito.forEach((item, index)=>{
+
+        let subtotal = item.precio * item.cantidad;
+        total += subtotal;
+
+        lista.innerHTML += `
+        <div>
+            ${item.nombre} x${item.cantidad} - $${subtotal}
+            <button onclick="cambiarCantidad(${index},1)">+</button>
+            <button onclick="cambiarCantidad(${index},-1)">-</button>
+            <button onclick="eliminar(${index})">❌</button>
+        </div>`;
     });
 
     document.getElementById("total").textContent = total;
+}
+
+function cambiarCantidad(index, cambio){
+    carrito[index].cantidad += cambio;
+    if(carrito[index].cantidad <= 0){
+        carrito.splice(index,1);
+    }
+    guardarCarrito();
+    render();
+}
+
+function eliminar(index){
+    carrito.splice(index,1);
+    guardarCarrito();
+    render();
 }
 
 function actualizarContador(){
@@ -240,30 +249,25 @@ function toggleCarrito(){
 }
 
 function mostrarNotificacion(texto){
-    let noti = document.getElementById("notificacion");
-    noti.textContent = texto;
-    noti.style.opacity = "1";
-
-    setTimeout(() => {
-        noti.style.opacity = "0";
-    }, 2000);
+    let n = document.getElementById("notificacion");
+    n.textContent = texto;
+    n.style.opacity = "1";
+    setTimeout(()=> n.style.opacity="0",2000);
 }
 
 function pagar(){
-    let mensaje = "Hola, quiero comprar:%0A";
+    let mensaje = "Hola quiero comprar:%0A";
 
-    carrito.forEach(item => {
-        mensaje += "- " + item.nombre + " ($" + item.precio + " MXN)%0A";
+    carrito.forEach(item=>{
+        mensaje += item.nombre + " x" + item.cantidad + "%0A";
     });
 
-    mensaje += "%0ATotal: $" + total + " MXN";
-
-    let telefono = "524271650743"; // CAMBIA ESTO
-
-    let url = "https://wa.me/" + telefono + "?text=" + mensaje;
-
-    window.location.href = url;
+    let telefono = "521XXXXXXXXXX";
+    window.location.href = "https://wa.me/"+telefono+"?text="+mensaje;
 }
+
+render();
+actualizarContador();
 </script>
 
 </body>
