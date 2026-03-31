@@ -2,156 +2,267 @@
 <html lang="es">
 <head>
 <meta charset="UTF-8">
-<title>Puffers - Fluffy Friends</title>
+<title>Pluffyzz </title>
 
 <style>
+:root {
+    --color-principal: hotpink;
+    --fondo: #fffafc;
+}
+
 body {
-    font-family: Comic Sans MS;
+    font-family: -apple-system, BlinkMacSystemFont, sans-serif;
     margin: 0;
-    background: #fff;
+    background: var(--fondo);
 }
 
-/* HERO */
-.hero {
-    background: linear-gradient(to right, pink, hotpink);
+/* NAV */
+nav {
+    background: black;
     color: white;
-    text-align: center;
-    padding: 80px 20px;
-}
-
-.hero h1 {
-    font-size: 50px;
-    margin: 0;
-}
-
-.hero p {
-    font-size: 20px;
-}
-
-/* BOTÓN VIRAL */
-.cta {
-    background: white;
-    color: hotpink;
-    border: none;
-    padding: 15px 25px;
-    font-size: 18px;
-    border-radius: 30px;
-    cursor: pointer;
-    margin-top: 20px;
-}
-
-/* PRODUCTOS */
-.productos {
+    padding: 15px;
     display: flex;
-    flex-wrap: wrap;
-    justify-content: center;
-    padding: 40px;
+    justify-content: space-between;
 }
 
-.producto {
-    background: #fffafc;
-    margin: 20px;
-    padding: 20px;
-    border-radius: 20px;
-    width: 220px;
+nav button {
+    background: var(--color-principal);
+    border: none;
+    padding: 10px;
+    border-radius: 10px;
+    cursor: pointer;
+}
+
+/* HERO PRO */
+.hero-pro {
+    background: #FFD400;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 50px;
+    flex-wrap: wrap;
+}
+
+.logo {
+    font-size: 60px;
+    font-weight: bold;
+    text-shadow: 4px 4px 0px #000;
+}
+
+.hero-text h2 {
+    font-size: 35px;
+    font-weight: 900;
+}
+
+.hero-img img {
+    width: 280px;
+    border-radius: 50%;
+}
+
+/* CATALOGO */
+.catalogo {
+    background: #FFD400;
+    display: flex;
+    justify-content: center;
+    gap: 40px;
+    padding: 60px 20px;
+    flex-wrap: wrap;
+}
+
+.card {
     text-align: center;
+    cursor: pointer;
     transition: 0.3s;
 }
 
-.producto:hover {
+.card img {
+    width: 250px;
+    height: 350px;
+    object-fit: cover;
+    border-radius: 30px;
+}
+
+.card:hover {
     transform: scale(1.05);
 }
 
-button {
-    background: hotpink;
+.card:active {
+    transform: scale(0.95);
+}
+
+.info {
+    background: #0B2A5B;
     color: white;
-    border: none;
-    padding: 10px;
+    padding: 15px;
     border-radius: 20px;
-    cursor: pointer;
+    margin-top: -40px;
+    width: 200px;
+    margin-left: auto;
+    margin-right: auto;
 }
 
-/* URGENCIA */
-.badge {
-    background: red;
-    color: white;
-    padding: 5px 10px;
-    border-radius: 10px;
-    font-size: 12px;
+.info p {
+    color: #00FF88;
+    font-weight: bold;
 }
 
-/* TESTIMONIOS */
-.testimonios {
-    background: #ffe4ec;
-    padding: 40px;
-    text-align: center;
-}
-
-.testimonios h2 {
-    margin-bottom: 20px;
-}
-
-/* FOOTER */
-footer {
-    background: black;
-    color: white;
-    text-align: center;
+/* CARRITO iOS */
+#carrito {
+    position: fixed;
+    right: 0;
+    bottom: -100%;
+    width: 100%;
+    height: 70%;
+    background: white;
+    border-radius: 25px 25px 0 0;
+    box-shadow: 0 -10px 30px rgba(0,0,0,0.3);
     padding: 20px;
+    transition: 0.4s;
+}
+
+#carrito.activo {
+    bottom: 0;
+}
+
+/* NOTIFICACIÓN */
+.noti {
+    position: fixed;
+    bottom: 20px;
+    right: 20px;
+    background: #0B2A5B;
+    color: white;
+    padding: 15px;
+    border-radius: 15px;
+    opacity: 0;
+    transition: 0.3s;
 }
 </style>
 </head>
 
 <body>
 
+<nav>
+    <h2>Pluffyzz </h2>
+    <button onclick="toggleCarrito()">
+        🛒 (<span id="contador">0</span>)
+    </button>
+</nav>
+
 <!-- HERO -->
-<section class="hero">
-    <h1>Puffers 🧸</h1>
-    <p>Los peluches más suaves de internet 💕</p>
-    <button class="cta">Comprar ahora</button>
+<section class="hero-pro">
+    <div class="hero-text">
+        <h1 class="logo">PLUFFYZZ</h1>
+        <h2>WELCOME TO THE<br>PLUSH TOY FARM!</h2>
+    </div>
+    <div class="hero-img">
+        <img src="pinguino.png">
+    </div>
 </section>
 
-<!-- PRODUCTOS -->
-<section class="productos">
+<!-- CATALOGO -->
+<section class="catalogo">
 
-<div class="producto">
-    <span class="badge">🔥 Bestseller</span>
-    <h3>Oso Puffy</h3>
-    <p>$200</p>
-    <button onclick="comprar('Oso Puffy')">Comprar</button>
+<div class="card" onclick="agregar('Conejo Soft',350)">
+    <img src="conejo.png">
+    <div class="info">
+        <h3>FUNNY BUNNY</h3>
+        <p>$350 MX</p>
+    </div>
 </div>
 
-<div class="producto">
-    <span class="badge">⚡ Últimas piezas</span>
-    <h3>Conejo Soft</h3>
-    <p>$180</p>
-    <button onclick="comprar('Conejo Soft')">Comprar</button>
+<div class="card" onclick="agregar('Elefante Puffy',350)">
+    <img src="elefante.png">
+    <div class="info">
+        <h3>ELEFUN</h3>
+        <p>$350 MX</p>
+    </div>
 </div>
 
-<div class="producto">
-    <h3>Gatito Fluffy</h3>
-    <p>$190</p>
-    <button onclick="comprar('Gatito Fluffy')">Comprar</button>
+<div class="card" onclick="agregar('Oso Puffy',350)">
+    <img src="oso.png">
+    <div class="info">
+        <h3>CLOUDY BEAR</h3>
+        <p>$350 MX</p>
+    </div>
+</div>
+
+<div class="card" onclick="agregar('Pingüino Puffy',350)">
+    <img src="pinguino.png">
+    <div class="info">
+        <h3>PENGU PUFF</h3>
+        <p>$350 MX</p>
+    </div>
 </div>
 
 </section>
 
-<!-- TESTIMONIOS -->
-<section class="testimonios">
-    <h2>💬 Lo que dicen nuestros clientes</h2>
-    <p>"El peluche más suave que he comprado 😭💕"</p>
-    <p>"Perfecto para regalo, 10/10"</p>
-</section>
+<!-- CARRITO -->
+<div id="carrito">
+    <h2>🛒 Carrito</h2>
+    <ul id="lista"></ul>
+    <h3>Total: $<span id="total">0</span> MXN</h3>
+    <button style="background:green;" onclick="pagar()">Comprar por WhatsApp 💬</button>
+</div>
 
-<footer>
-    <p>© Puffers 2026</p>
-</footer>
+<div id="notificacion" class="noti"></div>
 
 <script>
-function comprar(producto){
-    alert("Agregando " + producto + " 🛒");
-    
-    // Aquí metes tu link de pago real
-    window.location.href = "https://buy.stripe.com";
+let carrito = [];
+let total = 0;
+
+function agregar(nombre, precio){
+    carrito.push({nombre, precio});
+    total += precio;
+    render();
+    actualizarContador();
+    mostrarNotificacion(nombre + " añadido 🛒");
+}
+
+function render(){
+    let lista = document.getElementById("lista");
+    lista.innerHTML = "";
+
+    carrito.forEach(item=>{
+        let li = document.createElement("li");
+        li.textContent = item.nombre + " - $" + item.precio;
+        lista.appendChild(li);
+    });
+
+    document.getElementById("total").textContent = total;
+}
+
+function actualizarContador(){
+    document.getElementById("contador").textContent = carrito.length;
+}
+
+function toggleCarrito(){
+    document.getElementById("carrito").classList.toggle("activo");
+}
+
+function mostrarNotificacion(texto){
+    let noti = document.getElementById("notificacion");
+    noti.textContent = texto;
+    noti.style.opacity = "1";
+
+    setTimeout(() => {
+        noti.style.opacity = "0";
+    }, 2000);
+}
+
+function pagar(){
+    let mensaje = "Hola, quiero comprar:%0A";
+
+    carrito.forEach(item => {
+        mensaje += "- " + item.nombre + " ($" + item.precio + " MXN)%0A";
+    });
+
+    mensaje += "%0ATotal: $" + total + " MXN";
+
+    let telefono = "524271650743"; // CAMBIA ESTO
+
+    let url = "https://wa.me/" + telefono + "?text=" + mensaje;
+
+    window.location.href = url;
 }
 </script>
 
