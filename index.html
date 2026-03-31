@@ -27,6 +27,31 @@ nav {
     padding: 15px;
     display: flex;
     justify-content: space-between;
+    align-items: center;
+}
+
+/* BOTÓN CARRITO REDONDO */
+.btn-cart {
+    position: relative;
+    width: 50px;
+    height: 50px;
+    border-radius: 50%;
+    border: none;
+    background: var(--color-principal);
+    color: white;
+    font-size: 20px;
+    cursor: pointer;
+}
+
+.contador {
+    position: absolute;
+    top: -5px;
+    right: -5px;
+    background: red;
+    color: white;
+    font-size: 12px;
+    padding: 3px 7px;
+    border-radius: 50%;
 }
 
 /* HERO */
@@ -35,15 +60,26 @@ nav {
     display: flex;
     justify-content: space-between;
     padding: 50px;
+    align-items: center;
 }
 
-/* LOGO */
+/* LOGO TEXTO */
 .logo {
     font-size: 70px;
     font-weight: 900;
     color: var(--amarillo);
     -webkit-text-stroke: 3px black;
     text-shadow: 4px 4px #000;
+}
+
+/* LOGO IMAGEN */
+.logo-img {
+    width: 200px;
+    height: 200px;
+    object-fit: cover;
+    border-radius: 50%;
+    border: 5px solid white;
+    box-shadow: 0 10px 25px rgba(0,0,0,0.3);
 }
 
 /* CATALOGO */
@@ -57,22 +93,35 @@ nav {
 }
 
 .card {
+    position: relative;
     cursor: pointer;
 }
 
+/* IMÁGENES CORRECTAS */
 .card img {
     width: 250px;
-    height: 350px;
-    border-radius: 30px;
+    height: 250px;
+    object-fit: cover;
+    border-radius: 25px;
+    display: block;
 }
 
+/* PRECIO ENCIMA */
 .info {
-    background: var(--azul);
+    position: absolute;
+    bottom: 15px;
+    left: 50%;
+    transform: translateX(-50%);
+
+    background: rgba(27, 60, 115, 0.95);
     color: white;
-    padding: 10px;
+    padding: 10px 15px;
     border-radius: 20px;
-    margin-top: -40px;
+
     text-align: center;
+    z-index: 10;
+
+    box-shadow: 0 5px 15px rgba(0,0,0,0.3);
 }
 
 /* CARRITO */
@@ -134,7 +183,11 @@ nav {
 
 <nav>
     <h2>Pluffyzz </h2>
-    <button onclick="toggleCarrito()">🛒 (<span id="contador">0</span>)</button>
+
+    <button class="btn-cart" onclick="toggleCarrito()">
+        🛒
+        <span class="contador" id="contador">0</span>
+    </button>
 </nav>
 
 <section class="hero-pro">
@@ -142,7 +195,8 @@ nav {
         <h1 class="logo">PLUFFYZZ</h1>
         <h2>PLUSH TOY FARM</h2>
     </div>
-    <img src="animalespluffyzz.png" width="200">
+
+    <img src="animalespluffyzz.png" class="logo-img">
 </section>
 
 <section class="catalogo">
@@ -166,7 +220,7 @@ nav {
 <img src="pinguino.png">
 <div class="info">PINGU - $350</div>
 </div>
-  
+
 </section>
 
 <div id="carrito">
@@ -209,7 +263,6 @@ function render(){
     total = 0;
 
     carrito.forEach((item, index)=>{
-
         let subtotal = item.precio * item.cantidad;
         total += subtotal;
 
