@@ -2,13 +2,12 @@
 <html lang="es">
 <head>
 <meta charset="UTF-8">
-<title>Pluffyzz </title>
+<title>Pluffyzz 🧸</title>
 
 <link href="https://fonts.googleapis.com/css2?family=Fredoka:wght@400;600;700&display=swap" rel="stylesheet">
 
 <style>
 :root {
-    --color-principal: #6BCB77;
     --fondo: #FFF8FB;
     --azul: #1B3C73;
     --amarillo: #FFE066;
@@ -30,28 +29,31 @@ nav {
     align-items: center;
 }
 
-/* BOTÓN CARRITO REDONDO */
+/* BOTÓN CARRITO BLANCO */
 .btn-cart {
     position: relative;
     width: 50px;
     height: 50px;
     border-radius: 50%;
-    border: none;
-    background: var(--color-principal);
-    color: white;
+    border: 2px solid white;
+    background: white;
+    color: var(--azul);
     font-size: 20px;
     cursor: pointer;
+    box-shadow: 0 5px 15px rgba(0,0,0,0.2);
 }
 
+/* CONTADOR */
 .contador {
     position: absolute;
     top: -5px;
     right: -5px;
-    background: red;
+    background: #FF4D4D;
     color: white;
     font-size: 12px;
     padding: 3px 7px;
     border-radius: 50%;
+    font-weight: bold;
 }
 
 /* HERO */
@@ -63,7 +65,7 @@ nav {
     align-items: center;
 }
 
-/* LOGO TEXTO */
+/* LOGO */
 .logo {
     font-size: 70px;
     font-weight: 900;
@@ -97,13 +99,12 @@ nav {
     cursor: pointer;
 }
 
-/* IMÁGENES CORRECTAS */
+/* IMÁGENES BIEN PROPORCIONADAS */
 .card img {
     width: 250px;
     height: 250px;
     object-fit: cover;
     border-radius: 25px;
-    display: block;
 }
 
 /* PRECIO ENCIMA */
@@ -112,16 +113,31 @@ nav {
     bottom: 15px;
     left: 50%;
     transform: translateX(-50%);
-
     background: rgba(27, 60, 115, 0.95);
     color: white;
     padding: 10px 15px;
     border-radius: 20px;
-
-    text-align: center;
     z-index: 10;
+}
 
-    box-shadow: 0 5px 15px rgba(0,0,0,0.3);
+/* OVERLAY */
+#overlay {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: rgba(0,0,0,0.4);
+    backdrop-filter: blur(5px);
+    opacity: 0;
+    pointer-events: none;
+    transition: 0.3s;
+    z-index: 5;
+}
+
+#overlay.activo {
+    opacity: 1;
+    pointer-events: all;
 }
 
 /* CARRITO */
@@ -136,6 +152,7 @@ nav {
     padding: 20px;
     transition: 0.4s;
     overflow-y: auto;
+    z-index: 10;
 }
 
 #carrito.activo {
@@ -149,7 +166,7 @@ nav {
     padding: 10px;
 }
 
-/* BOTÓN WHATSAPP */
+/* WHATSAPP */
 .btn-wa {
     position: fixed;
     bottom: 25px;
@@ -157,11 +174,10 @@ nav {
     width: 65px;
     height: 65px;
     border-radius: 50%;
-    background: linear-gradient(135deg, #6BCB77, #4CAF50);
+    background: #6BCB77;
     color: white;
     font-size: 28px;
     border: none;
-    z-index: 9999;
 }
 
 /* NOTI */
@@ -182,7 +198,7 @@ nav {
 <body>
 
 <nav>
-    <h2>Pluffyzz </h2>
+    <h2>Pluffyzz 🧸</h2>
 
     <button class="btn-cart" onclick="toggleCarrito()">
         🛒
@@ -222,6 +238,8 @@ nav {
 </div>
 
 </section>
+
+<div id="overlay" onclick="toggleCarrito()"></div>
 
 <div id="carrito">
 <button class="cerrar" onclick="toggleCarrito()">Cerrar</button>
@@ -299,6 +317,7 @@ function actualizarContador(){
 
 function toggleCarrito(){
     document.getElementById("carrito").classList.toggle("activo");
+    document.getElementById("overlay").classList.toggle("activo");
 }
 
 function mostrarNotificacion(texto){
