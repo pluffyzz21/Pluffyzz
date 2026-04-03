@@ -259,7 +259,7 @@ body {
         padding: 20px;
     }
 
-/* 🪟 MODAL PRO */
+/* 🪟 MODAL RESPONSIVE PRO */
 .modal {
     position: fixed;
     top: 0;
@@ -268,11 +268,11 @@ body {
     height: 100%;
 
     background: rgba(0,0,0,0.3);
-    backdrop-filter: blur(8px); /* 🔥 BLUR */
+    backdrop-filter: blur(8px);
 
     display: flex;
     justify-content: center;
-    align-items: flex-end; /* 🔥 SALE DESDE ABAJO */
+    align-items: flex-end;
 
     opacity: 0;
     pointer-events: none;
@@ -285,7 +285,7 @@ body {
     pointer-events: all;
 }
 
-/* 🎬 ANIMACIÓN */
+/* 📱 MOBILE */
 .modal-content {
     background: white;
     width: 100%;
@@ -294,12 +294,32 @@ body {
     padding: 25px;
     text-align: center;
 
-    transform: translateY(100%); /* empieza abajo */
+    transform: translateY(100%);
     transition: 0.4s ease;
 }
 
 .modal.activo .modal-content {
-    transform: translateY(0); /* sube */
+    transform: translateY(0);
+}
+
+/* 💻 DESKTOP */
+@media (min-width: 769px) {
+
+    .modal {
+        align-items: center;
+    }
+
+    .modal-content {
+        border-radius: 25px;
+        max-width: 420px;
+        transform: scale(0.8);
+        opacity: 0;
+    }
+
+    .modal.activo .modal-content {
+        transform: scale(1);
+        opacity: 1;
+    }
 }
 
 /* IMAGEN */
@@ -317,6 +337,7 @@ body {
     color: white;
     margin-top: 10px;
     font-size: 16px;
+    cursor: pointer;
 }
 </style>
 </head>
