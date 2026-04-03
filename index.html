@@ -259,7 +259,65 @@ body {
         padding: 20px;
     }
 
- 
+/* 🪟 MODAL PRO */
+.modal {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+
+    background: rgba(0,0,0,0.3);
+    backdrop-filter: blur(8px); /* 🔥 BLUR */
+
+    display: flex;
+    justify-content: center;
+    align-items: flex-end; /* 🔥 SALE DESDE ABAJO */
+
+    opacity: 0;
+    pointer-events: none;
+    transition: 0.3s;
+    z-index: 999;
+}
+
+.modal.activo {
+    opacity: 1;
+    pointer-events: all;
+}
+
+/* 🎬 ANIMACIÓN */
+.modal-content {
+    background: white;
+    width: 100%;
+    max-width: 400px;
+    border-radius: 25px 25px 0 0;
+    padding: 25px;
+    text-align: center;
+
+    transform: translateY(100%); /* empieza abajo */
+    transition: 0.4s ease;
+}
+
+.modal.activo .modal-content {
+    transform: translateY(0); /* sube */
+}
+
+/* IMAGEN */
+.modal-content img {
+    width: 100%;
+    border-radius: 20px;
+}
+
+/* BOTÓN */
+.modal-content button {
+    background: #6ECFE3;
+    border: none;
+    padding: 12px 20px;
+    border-radius: 15px;
+    color: white;
+    margin-top: 10px;
+    font-size: 16px;
+}
 </style>
 </head>
 
@@ -285,28 +343,32 @@ body {
 <div class="pasto"></div>
 <section class="catalogo">
 
-<div class="card" onclick="agregar('Conejo Soft',350)">
+<div class="card" onclick="abrirModal('conejo')">
 <img src="conejo.png">
 <div class="info">FUNNY BUNNY - $350</div>
 </div>
 
-<div class="card" onclick="agregar('Elefante Puffy',350)">
+<div class="card" onclick="abrirModal('elefante')">
 <img src="elefante.png">
 <div class="info">ELEFUN - $350</div>
 </div>
 
-<div class="card" onclick="agregar('Oso Puffy',350)">
+<div class="card" onclick="abrirModal('oso')">
 <img src="oso.png">
 <div class="info">CLOUDY BEAR - $350</div>
 </div>
 
-<div class="card" onclick="agregar('Pinguino Puffy',350)">
+<div class="card" onclick="abrirModal('pinguino')">
 <img src="pinguino.png">
 <div class="info">PINGU - $350</div>
 </div>
 
 </section>
-
+<!-- MODAL -->
+<div id="modal" class="modal">
+    <div class="modal-content" id="modal-content"></div>
+</div>
+    
 <div id="overlay" onclick="toggleCarrito()"></div>
 
 <div id="carrito">
@@ -408,6 +470,61 @@ function pagar(){
 
 render();
 actualizarContador();
+
+function abrirModal(tipo){
+
+    let contenido = "";
+
+    if(tipo === "conejo"){
+        contenido = `
+        <img src="conejo.png">
+        <h2>Funny Bunny </h2>
+        <p>Súper suave y adorable</p>
+        <p><strong>$350 MXN</strong></p>
+        <button onclick="agregar('Conejo Soft',350)">Agregar al carrito</button>
+        `;
+    }
+
+    if(tipo === "elefante"){
+        contenido = `
+        <img src="elefante.png">
+        <h2>Elefun </h2>
+        <p>Perfecto para abrazar</p>
+        <p><strong>$350 MXN</strong></p>
+        <button onclick="agregar('Elefante Puffy',350)">Agregar al carrito</button>
+        `;
+    }
+
+    if(tipo === "oso"){
+        contenido = `
+        <img src="oso.png">
+        <h2>Cloudy Bear </h2>
+        <p>El más clásico y tierno</p>
+        <p><strong>$350 MXN</strong></p>
+        <button onclick="agregar('Oso Puffy',350)">Agregar al carrito</button>
+        `;
+    }
+
+    if(tipo === "pinguino"){
+        contenido = `
+        <img src="pinguino.png">
+        <h2>Pingu Puff 🐧</h2>
+        <p>Frío por fuera, suave por dentro</p>
+        <p><strong>$350 MXN</strong></p>
+        <button onclick="agregar('Pinguino Puffy',350)">Agregar al carrito</button>
+        `;
+    }
+
+    document.getElementById("modal-content").innerHTML = contenido;
+    document.getElementById("modal").classList.add("activo");
+}
+
+/* cerrar modal */
+document.getElementById("modal").addEventListener("click", function(e){
+    if(e.target.id === "modal"){
+        this.classList.remove("activo");
+    }
+});
 </script>
 
 </body>
