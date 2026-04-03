@@ -208,13 +208,28 @@ nav {
     position: fixed;
     bottom: 25px;
     right: 25px;
-    width: 65px;
-    height: 65px;
+
+    width: 70px;
+    height: 70px;
+
     border-radius: 50%;
-    background: #6BCB77;
+    background: linear-gradient(135deg, #6ECFE3, #4FBAD1);
     color: white;
-    font-size: 28px;
+
+    font-size: 30px;
     border: none;
+
+    box-shadow: 0 10px 25px rgba(0,0,0,0.2);
+
+    display: flex;
+    justify-content: center;
+    align-items: center;
+
+    transition: 0.3s;
+}
+
+.btn-wa:hover {
+    transform: scale(1.1);
 }
 
 /* NOTI */
@@ -295,7 +310,7 @@ body {
     text-align: center;
 
     transform: translateY(100%);
-    transition: 0.4s ease;
+    transition: 0.5s cubic-bezier(0.22, 1, 0.36, 1);
 }
 
 .modal.activo .modal-content {
@@ -338,6 +353,13 @@ body {
     margin-top: 10px;
     font-size: 16px;
     cursor: pointer;
+}
+.barra {
+    width: 50px;
+    height: 5px;
+    background: #ccc;
+    border-radius: 10px;
+    margin: 0 auto 15px;
 }
 </style>
 </head>
@@ -387,8 +409,8 @@ body {
 </section>
 <!-- MODAL -->
 <div id="modal" class="modal">
-    <div class="modal-content" id="modal-content"></div>
-</div>
+    <div class="modal-content" id="modal-content">
+        <div class="barra"></div>
     
 <div id="overlay" onclick="toggleCarrito()"></div>
 
@@ -544,6 +566,37 @@ function abrirModal(tipo){
 document.getElementById("modal").addEventListener("click", function(e){
     if(e.target.id === "modal"){
         this.classList.remove("activo");
+    }
+});
+
+let startY = 0;
+let endY = 0;
+
+const modal = document.getElementById("modal");
+const contenido = document.getElementById("modal-content");
+
+contenido.addEventListener("touchstart", (e) => {
+    startY = e.touches[0].clientY;
+});
+
+contenido.addEventListener("touchmove", (e) => {
+    endY = e.touches[0].clientY;
+
+    let diff = endY - startY;
+
+    if(diff > 0){
+        contenido.style.transform = `translateY(${diff}px)`;
+    }
+});
+
+contenido.addEventListener("touchend", () => {
+    let diff = endY - startY;
+
+    if(diff > 100){
+        modal.classList.remove("activo");
+        contenido.style.transform = "";
+    } else {
+        contenido.style.transform = "translateY(0)";
     }
 });
 </script>
