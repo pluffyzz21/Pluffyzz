@@ -8,6 +8,8 @@
 <link href="https://fonts.googleapis.com/css2?family=Fredoka:wght@400;600;700&display=swap" rel="stylesheet">
 
 <style>
+
+    
 :root {
     --fondo: #FFF8FB;
     --azul: #0CC0DF;
@@ -143,6 +145,27 @@ nav {
     background-size: auto 100%;
     margin-top: -10px;
 }
+
+.pasto-container {
+    position: relative;
+    width: 100%;
+}
+
+.animal {
+    position: absolute;
+    bottom: 10px;
+    z-index: 5;
+}
+
+.conejo {
+    left: 30px;
+    width: 90px;
+}
+
+.pinguino {
+    right: 30px;
+    width: 100px;
+}
 /* PRECIO ENCIMA */
 .info {
     position: absolute;
@@ -247,9 +270,23 @@ nav {
 }
 /* 📱 MOBILE */
 @media (max-width: 768px) {
+
 body {
     overflow-x: hidden;
 }
+    .conejo {
+        width: 60px;
+        left: 10px;
+    }
+
+    .pinguino {
+        width: 70px;
+        right: 10px;
+    }
+
+    .pasto {
+        height: 70px;
+    }
     .hero-pro {
         flex-direction: column;
         text-align: center;
@@ -384,7 +421,12 @@ body {
 
     <img src="pluffyzz.png" class="logo-img">
 </section>
-<div class="pasto"></div>
+<div class="pasto-container">
+    <div class="pasto"></div>
+    <img src="conejo1.1.png" class="animal conejo">
+    <img src="pinguino1.1.png" class="animal pinguino">
+</div>
+    
 <section class="catalogo">
 
 <div class="card" onclick="abrirModal('conejo')">
